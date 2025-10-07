@@ -212,4 +212,11 @@ Finalmente, los resultados de todas las señales se organizan en un DataFrame de
 <p align="center">
 <img src="tabla1.png" width="400">
 
+## PARTE B
+
+<p align="center">
+<img src="diagrama2.png" width="400">
+
+
+
 
