@@ -161,11 +161,45 @@ plt.subplots_adjust(hspace=0.6)
 plt.suptitle("Espectros de magnitud de las señales de voz", fontsize=16, y=0.95)
 plt.show()     
 ```
-Mostrando los siguientes resultados: 
+
+En este código, primero se aplica la Transformada Rápida de Fourier con `(np.fft.fft)` para convertir las señales de voz del dominio del tiempo al dominio de la frecuencia. Luego se obtiene la magnitud del espectro con `np.abs()` y se toma solo la mitad positiva porque el espectro de una señal real es simétrico, y esa parte ya contiene toda la información relevante sobre las frecuencias. Seguidamente se crea un vector de frecuencias (f1, f2, etc.) que va de 0 a la mitad de la frecuencia de muestreo `(sr/2)` y se dibujan los espectros de magnitud de las 6 señales (hombres en azul, mujeres en naranja) mostrando cómo se distribuye la energía en distintas frecuencias: 
 
 <p align="center">
 <img src="espectros.png" width="400">
 
-y se identificaron las siguientes características de cada señal: Frecuencia fundamental, frecuencia media, brillo e intensidad (energía), para en la parte final realizar su respectivo análisis. 
- 
+Para terminar la parte A, se identificaron las siguientes características de cada señal: Frecuencia fundamental, frecuencia media, brillo e intensidad (energía) así:
+
+```python
+# Función para calcular características
+def analizar_senal(nombre, ruta):
+    sr, y = wavfile.read(ruta)
+    y = y / np.max(np.abs(y))  # normalizar
+    N = len(y)
+    Y = np.fft.fft(y)
+    Y = np.abs(Y[:N//2])
+    freqs = np.fft.fftfreq(N, 1/sr)[:N//2]
+
+    # Frecuencia fundamental
+    mask = (freqs > 50) & (freqs < 500)
+    f0 = freqs[mask][np.argmax(Y[mask])]
+
+    # Frecuencia media
+    f_media = np.sum(freqs * Y) / np.sum(Y)
+
+    # Brillo (porcentaje de energía >1500 Hz)
+    brillo = np.sum(Y[freqs > 1500]) / np.sum(Y)
+
+    # Energía (intensidad)
+    energia = np.sum(y**2)
+
+    return nombre, f0, f_media, brillo, energia
+
+# Procesar todas las señales
+resultados = [analizar_senal(nombre, ruta) for nombre, ruta in archivos]
+
+# Mostrar resultados
+df = pd.DataFrame(resultados, columns=['Señal', 'F0 (Hz)', 'Frecuencia media (Hz)', 'Brillo', 'Energía'])
+print(df.round(3))         
+```
+
 
