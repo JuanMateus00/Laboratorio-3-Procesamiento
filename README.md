@@ -226,5 +226,19 @@ lowcut = 80.0   # Voz masculina
 highcut = 400.0
 # Para voz femenina: lowcut = 150.0, highcut = 500.0
 ```
+Esto permite eliminar ruido y mantener solo las frecuencias útiles de la voz.
+
+Se diseña un filtro Butterworth de cuarto orden, que ofrece una respuesta suave sin ondulaciones, ideal para señales de voz naturales.
+```phyton
+b, a = butter(order, [low, high], btype='band')
+```
+El filtro se aplica hacia adelante y hacia atrás con filtfilt, evitando distorsiones de fase y preservando la forma original de la onda.
+```phyton
+filtered_data = filtfilt(b, a, data)
+```
+Se grafica la señal filtrada, donde solo permanecen las frecuencias dentro del rango vocal definido para el género correspondiente.
+```phyton
+plt.plot(filtered_data, color='royalblue')
+plt.plot(filtered_data, color='orange')
 
 
