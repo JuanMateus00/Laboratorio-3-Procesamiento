@@ -86,7 +86,7 @@ plt.show()
 Y mostrando los siguientes resultados: 
 
 <p align="center">
-<img src="diagrama1.png" width="400">
+<img src="señales-de-voz-en-el-dominio-del-tiempo.png" width="400">
 
 
 
