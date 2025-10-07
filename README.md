@@ -321,3 +321,28 @@ En esta parte se define la ruta de los audios, se lista cada archivo junto a su 
 
 <p align="center">
 <img src="tabla2.jpg" width="400">
+
+## PARTE C
+Para finalizar se compararon los resultados obtenidos entre las voces masculinas y femeninas. 
+
+¿Qué diferencias se observan en la frecuencia fundamental?
+Se puede notar que las voces masculinas (Hombre 1, 2 y 3) presentan una amplitud mayor y una forma de onda con ciclos más largos, lo que refleja una frecuencia fundamental más baja. Esto se asocia con el tono grave característico de la voz masculina. Por otro lado, las voces femeninas (Mujer 1, 2 y 3) muestran una mayor frecuencia, lo que indica una frecuencia fundamental más alta y un tono más agudo. Además, la amplitud de sus señales tiende a ser más uniforme, lo que puede relacionarse con una emisión vocal más controlada.
+
+¿Qué otras diferencias notan en términos de brillo, media o intensidad?
+En los resultados obtenidos se observa que las voces femeninas presentan valores más altos tanto en frecuencia media como en brillo, lo cual indica una mayor concentración de energía en las frecuencias agudas. Esto se debe a que las cuerdas vocales de las mujeres son más cortas y delgadas, lo que genera una vibración más rápida y, por ende, un espectro más rico en armónicos altos.
+Por ejemplo, las frecuencias medias de las voces femeninas están entre 1736 y 2024 Hz, mientras que en las masculinas oscilan entre 1447 y 1936 Hz. De igual forma, el brillo es mayor en las voces femeninas (hasta 0.472) que en las masculinas (máximo 0.339), lo que refleja un tono más claro o “brillante”.
+En cuanto a la intensidad (energía), las diferencias no siguen un patrón fijo, ya que dependen más del volumen y la potencia con que se emitió la voz. Sin embargo, se puede notar que algunas voces femeninas, como Mujer 2, presentan una energía superior, posiblemente por una mayor proyección vocal durante la grabación.
+
+Conclusiones
+A partir de los análisis realizados en el dominio del tiempo y de frecuencia, se evidencia que existen diferencias claras entre las voces masculinas y femeninas. En general, las voces masculinas presentan una frecuencia fundamental más baja, lo que se traduce en un tono más grave. Esto se debe a que las cuerdas vocales de los hombres son más largas y gruesas, produciendo una vibración más lenta.
+
+Por otro lado, las voces femeninas exhiben una frecuencia fundamental y media más altas, así como un mayor brillo, lo que refleja una mayor presencia de componentes de alta frecuencia. Estas características son responsables del tono más agudo y claro de la voz femenina. 
+
+La energía o intensidad varía entre los individuos y no depende exclusivamente del género, sino también de factores como la fuerza de emisión, la técnica vocal y las condiciones de grabación.
+
+Importancia clínica del jitter y shimmer en el análisis de la voz.
+El jitter mide las variaciones de frecuencia entre ciclos consecutivos de la onda glótica. Un valor elevado de jitter indica inestabilidad en la frecuencia fundamental, lo cual puede reflejar alteraciones en el control neuromuscular de las cuerdas vocales o irregularidades estructurales. Clínicamente, un incremento en el jitter se asocia a patologías como disfonías, parálisis laríngea, nódulos o temblores vocales.
+El shimmer, por su parte, cuantifica las variaciones de amplitud entre ciclos sucesivos. Un shimmer alto señala inconsistencias en la intensidad o energía de la señal vocal, lo que también puede deberse a una vibración asimétrica de las cuerdas vocales, lesiones benignas o problemas de cierre glótico.
+
+En conjunto, el análisis de jitter y shimmer ofrece una herramienta objetiva y no invasiva para detectar, diagnosticar y monitorear trastornos de la voz, así como para evaluar la evolución de tratamientos fonoaudiológicos o quirúrgicos. Estos parámetros son, por tanto, de gran relevancia clínica en la valoración funcional del sistema fonatorio.
+
