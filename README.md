@@ -201,5 +201,15 @@ resultados = [analizar_senal(nombre, ruta) for nombre, ruta in archivos]
 df = pd.DataFrame(resultados, columns=['Señal', 'F0 (Hz)', 'Frecuencia media (Hz)', 'Brillo', 'Energía'])
 print(df.round(3))         
 ```
+La función `analizar_senal()` emplea `wavfile.read()` para leer los archivos `.wav`, obteniendo la frecuencia de muestreo `(sr)` y los datos de la señal `(y)`. Luego, con `Numpy`, se normaliza la señal dividiendo por su valor máximo `(y / np.max(np.abs(y)))` y se aplica la Transformada Rápida de Fourier mediante `np.fft.fft(y)` para pasar la señal al dominio de la frecuencia. Posteriormente, se generan los vectores de frecuencias con `np.fft.fftfreq()` y se calcula:
+
+- La frecuencia fundamental (f₀) localizando el máximo valor del espectro en el rango de 50–500 Hz.
+- La frecuencia media, usando la media ponderada de la energía `(np.sum(freqs * Y) / np.sum(Y))`.
+- El brillo, midiendo la proporción de energía por encima de 1500 Hz.
+- La energía total, calculada como la suma del cuadrado de las amplitudes `(np.sum(y**2))`.
+
+Finalmente, los resultados de todas las señales se organizan en un DataFrame de pandas con `pd.DataFrame()`, lo que facilita su visualización y da como resultado la siguiente tabla:
+<p align="center">
+<img src="tabla1.png" width="400">
 
 
