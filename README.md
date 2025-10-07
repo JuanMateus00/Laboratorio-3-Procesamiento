@@ -243,4 +243,78 @@ plt.plot(filtered_data, color='orange')
 ````
 <p align="center">
 <img src="Voces_filtradas.png" width="400">
+<p align="center">
+<img src="Voces_filtradas1.png" width="400">
 
+El siguiente código tiene como objetivo analizar la calidad de señales de voz humana a partir del cálculo de dos parámetros fundamentales en el estudio acústico de la voz: Jitter y Shimmer.
+```phyton
+def bandpass_filter(signal, fs, lowcut, highcut, order=4):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    filtered = filtfilt(b, a, signal)
+    return filtered
+```
+Esta función aplica un filtro pasa-banda a la señal para eliminar frecuencias no deseadas. Se calcula la frecuencia de Nyquist, se normalizan los límites del filtro y se usa el método Butterworth con filtfilt para evitar desfases.
+```python
+def medir_jitter_shimmer(path_audio, genero):
+    fs, data = wavfile.read(path_audio)
+    if data.ndim > 1:
+        data = data[:, 0]
+
+    if genero.lower() == 'hombre':
+        lowcut, highcut = 80, 400
+    else:
+        lowcut, highcut = 150, 500
+
+    data = bandpass_filter(data, fs, lowcut, highcut)
+
+    peaks, _ = find_peaks(data, height=0)
+    if len(peaks) < 3:
+        return None, None, None, None
+
+    T = np.diff(peaks) / fs
+    A = data[peaks]
+
+    Jitter_abs = np.mean(np.abs(np.diff(T)))
+    Jitter_rel = (Jitter_abs / np.mean(T)) * 100
+
+    Shimmer_abs = np.mean(np.abs(np.diff(A)))
+    Shimmer_rel = (Shimmer_abs / np.mean(A)) * 100
+
+    return Jitter_abs, Jitter_rel, Shimmer_abs, Shimmer_rel
+```
+Esta función lee el archivo de audio, selecciona un rango de frecuencias según el género (hombre o mujer) y filtra la señal. Luego detecta los picos de la onda, calcula los periodos y amplitudes entre ellos y a partir de eso obtiene los valores absolutos y relativos de Jitter (variación del periodo) y Shimmer (variación de la amplitud).
+
+```python
+ruta_base = "/content/drive/MyDrive/audios"
+archivos = [
+    ("/audios/Hombre-1.wav", "hombre"),
+    ("/audios/Hombre-2.wav", "hombre"),
+    ("/audios/Hombre-3.wav", "hombre"),
+    ("/audios/mujer1.wav", "mujer"),
+    ("/audios/mujer-2.wav", "mujer"),
+    ("/audios/mujer3.wav", "mujer"),
+]
+
+resultados = []
+for nombre, genero in archivos:
+    path = os.path.join(ruta_base, nombre)
+    try:
+        Jabs, Jrel, Sabs, Srel = medir_jitter_shimmer(path, genero)
+        resultados.append({
+            "Archivo": nombre,
+            "Género": genero,
+            "Jitter_abs": Jabs,
+            "Jitter_rel (%)": Jrel,
+            "Shimmer_abs": Sabs,
+            "Shimmer_rel (%)": Srel
+        })
+    except Exception as e:
+        print(f"Error con {nombre}: {e}")
+
+print(df.round(3))
+
+```
+En esta parte se define la ruta de los audios, se lista cada archivo junto a su género y se ejecuta el análisis para cada uno. Los resultados se guardan en una lista de diccionarios con los valores de Jitter y Shimmer, que finalmente se muestran redondeados para facilitar su lectura.
