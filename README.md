@@ -320,4 +320,4 @@ print(df.round(3))
 En esta parte se define la ruta de los audios, se lista cada archivo junto a su género y se ejecuta el análisis para cada uno. Los resultados se guardan en una lista de diccionarios con los valores de Jitter y Shimmer, que finalmente se muestran redondeados para facilitar su lectura.
 
 <p align="center">
-<img src="tabla2.png" width="400">
+<img src="tabla2.jpg" width="400">
