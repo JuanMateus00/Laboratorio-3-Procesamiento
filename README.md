@@ -212,11 +212,9 @@ Finalmente, los resultados de todas las señales se organizan en un DataFrame de
 <p align="center">
 <img src="tabla1.png" width="400">
 
-
+# Parte B
 <p align="center">
 <img src="diagrama2.png" width="400">
-
-# Parte B
 
 Se carga el archivo `.wav` y se obtiene la frecuencia de muestreo (`fs`) y los datos de la señal (`data`). Si el audio es estéreo, se selecciona solo un canal para analizarlo.
 ```phyton
