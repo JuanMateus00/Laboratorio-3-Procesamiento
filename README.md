@@ -164,7 +164,7 @@ plt.show()
 Mostrando los siguientes resultados: 
 
 <p align="center">
-<img src="espectro.png" width="400">
+<img src="espectros.png" width="400">
 
 y se identificaron las siguientes características de cada señal: Frecuencia fundamental, frecuencia media, brillo e intensidad (energía), para en la parte final realizar su respectivo análisis. 
  
