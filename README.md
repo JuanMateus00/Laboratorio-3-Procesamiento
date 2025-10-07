@@ -240,7 +240,7 @@ Finalmente se grafica la señal filtrada, donde solo permanecen las frecuencias 
 ```phyton
 plt.plot(filtered_data, color='royalblue')
 plt.plot(filtered_data, color='orange')
-
+````
 <p align="center">
 <img src="Voces_filtradas.png" width="400">
 
