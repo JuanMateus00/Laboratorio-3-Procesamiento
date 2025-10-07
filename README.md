@@ -212,11 +212,21 @@ Finalmente, los resultados de todas las señales se organizan en un DataFrame de
 <p align="center">
 <img src="tabla1.png" width="400">
 
-## PARTE B
 
 <p align="center">
 <img src="diagrama2.png" width="400">
 
+# Parte B
 
+Se carga el archivo `.wav` y se obtiene la frecuencia de muestreo (`fs`) y los datos de la señal (`data`). Si el audio es estéreo, se selecciona solo un canal para analizarlo.
+```phyton
+fs, data = wavfile.read('/content/drive/MyDrive/Hombre-1.wav')
+```
+Se define el rango de frecuencias típico de la voz masculina (80–400 Hz) y (150-500 Hz) de la voz femenina para eliminar ruido fuera de ese rango.
+```phyton
+lowcut = 80.0   # Voz masculina
+highcut = 400.0
+# Para voz femenina: lowcut = 150.0, highcut = 500.0
+```
 
 
