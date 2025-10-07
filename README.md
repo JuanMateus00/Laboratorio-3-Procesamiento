@@ -236,9 +236,11 @@ El filtro se aplica hacia adelante y hacia atrás con filtfilt, evitando distors
 ```phyton
 filtered_data = filtfilt(b, a, data)
 ```
-Se grafica la señal filtrada, donde solo permanecen las frecuencias dentro del rango vocal definido para el género correspondiente.
+Finalmente se grafica la señal filtrada, donde solo permanecen las frecuencias dentro del rango vocal definido para el género correspondiente.
 ```phyton
 plt.plot(filtered_data, color='royalblue')
 plt.plot(filtered_data, color='orange')
 
+<p align="center">
+<img src="Voces_filtradas.png" width="400">
 
