@@ -13,7 +13,7 @@ from google.colab import files
 from scipy.io import wavfile
           
 ```
-La librería `wave` se utilizó para leer, escribir, ver duración, canales e inspeccionar los archivos de audio `.wav`. Asimismo, `scipy.io.wavfile` se usó para leer las grabaciones de audio y extraer la frecuencia de muestreo `sr` y los datos de la señal `y`. 
+La librería `wave` se utilizó para inspeccionar, leer, escribir y ver la duración y los canales de los archivos de audio `.wav`, al igual que `scipy.io.wavfile` que se usó para leer las grabaciones de audio y extraer la frecuencia de muestreo `sr` y los datos de la señal `y`. La librería `Numpy` fue escencial para trabajar con los arreglos de amplitudes y tiempos, detectar los cruces por cero (identificar periodos de vibración), y para aplicar las fórmulas del Jitter y Shimmer, sumando, promediando y restando elementos. `matplotlib.pyplot` y `pandas` sirvieron para la visualización de los resultados, tanto en gráficas como en tablas respectivamente. Finalmente, `a`
 
 ## PARTE A
 
